@@ -3,7 +3,7 @@
 ## General Setup
 Harness system allowing you to save harnesses per vehicle (persistent) on owned vehicles. This allows you to simply use your seatbelt hotkey to attach your racing harness instead of having to carry it all the time.
 
-Preview: [SOON]]
+Preview: https://www.youtube.com/watch?v=IsdJzm9LnIg
 
 ## Installation
 If you're to lazy to do this, I included the drag and drop of qb-smallresources seatbelt.lua in the files lazy fuck
