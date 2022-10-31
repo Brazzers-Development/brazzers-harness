@@ -55,7 +55,7 @@ end, false)
 
 RegisterKeyMapping('toggleseatbelt', 'Toggle Seatbelt', 'keyboard', 'B')
 ```
-Locate your harness useable item in your qb-smallresources > server > seatbelt.lua and replace with the one below:
+Locate your harness useable item in your qb-smallresources > server > main.lua and replace with the one below:
 ```lua
 QBCore.Functions.CreateUseableItem("harness", function(source, item)
     TriggerClientEvent('brazzers-harness:client:attachHarness', source, item)
