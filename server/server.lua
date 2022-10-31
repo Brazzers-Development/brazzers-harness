@@ -1,6 +1,12 @@
 local QBCore = exports[Config.Core]:GetCoreObject()
 
 local function isVehicleOwned(plate)
+    if Config.BrazzersFakePlate then
+        local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
+        if hasFakePlate then plate = hasFakePlate end
+        Wait(100)
+    end
+    
     local result = MySQL.scalar.await('SELECT plate FROM player_vehicles WHERE plate = ?', {plate})
     if result then
         return true
@@ -8,6 +14,12 @@ local function isVehicleOwned(plate)
 end
 
 local function hasHarness(plate)
+    if Config.BrazzersFakePlate then
+        local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
+        if hasFakePlate then plate = hasFakePlate end
+        Wait(100)
+    end
+
     local result = MySQL.scalar.await('SELECT harness FROM player_vehicles WHERE plate = ?', {plate})
     if result then
         return true
@@ -28,10 +40,12 @@ RegisterNetEvent('brazzers-harness:server:installHarness', function(plate)
     if not Player then return end
     if hasHarness(plate) then return TriggerClientEvent('QBCore:Notify', src, Lang:t("error.already_installed"), 'error') end
 
-    local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
-    if hasFakePlate then plate = hasFakePlate end
-    Wait(100)
-    
+    if Config.BrazzersFakePlate then
+        local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
+        if hasFakePlate then plate = hasFakePlate end
+        Wait(100)
+    end
+
     -- Remove Item
     Player.Functions.RemoveItem(Config.Harness, 1)
     TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'remove')
