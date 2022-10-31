@@ -1,0 +1,1 @@
+	["harness"] 				 	 = {["name"] = "harness", 			  	  		["label"] = "Racing Harness", 			["weight"] = 1000, 		["type"] = "item", 		["image"] = "harness.png", 				["unique"] = true,      ["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Stops you from being YEETED"},
