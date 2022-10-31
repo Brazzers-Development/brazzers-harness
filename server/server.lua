@@ -26,6 +26,7 @@ RegisterNetEvent('brazzers-harness:server:installHarness', function(plate)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
+    if hasHarness(plate) then return TriggerClientEvent('QBCore:Notify', src, Lang:t("error.already_installed"), 'error') end
     -- Remove Item
     Player.Functions.RemoveItem(Config.Harness, 1)
     TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'remove')
