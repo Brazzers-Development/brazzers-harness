@@ -1,4 +1,4 @@
-![Brazzers Development Discord](https://i.imgur.com/b3XrQcW.png)
+![Brazzers Development Discord Image](https://i.imgur.com/b3XrQcW.png)[(Brazzers Development Discord)](https://discord.gg/J7EH9f9Bp3)
 
 # Installation steps
 
