@@ -1,4 +1,11 @@
-![Brazzers Development Discord Image](https://i.imgur.com/b3XrQcW.png)[(Brazzers Development Discord)](https://discord.gg/J7EH9f9Bp3)
+<details>
+        <p>
+            <a href="https://discord.gg/J7EH9f9Bp3">
+                <img alt="GitHub" src="https://i.imgur.com/b3XrQcW.png"
+                width="1080" height="141">
+            </a>
+        </p>
+</details>
 
 # Installation steps
 
