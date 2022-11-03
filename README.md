@@ -1,3 +1,5 @@
+![Brazzers Development Discord](https://i.imgur.com/b3XrQcW.png)
+
 # Installation steps
 
 ## General Setup
