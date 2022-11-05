@@ -60,6 +60,19 @@ RegisterNetEvent('brazzers-harness:server:installHarness', function(plate, actio
     end
 end)
 
+RegisterNetEvent('brazzers-harness:server:uninstallHarness', function(plate)
+    local src = source
+    if not plate then return end
+
+    if Config.BrazzersFakePlate then
+        local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
+        if hasFakePlate then plate = hasFakePlate end
+        Wait(100)
+    end
+
+    MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{NULL, plate})
+end)
+
 RegisterNetEvent('brazzers-harness:server:toggleBelt', function(plate, ItemData)
     local src = source
     if not src then return end
