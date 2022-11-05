@@ -13,14 +13,16 @@ RegisterNetEvent("brazzers-harness:client:attachHarness", function(ItemData)
     TriggerServerEvent('brazzers-harness:server:attachHarness', validateClass(), ItemData)
 end)
 
-RegisterNetEvent('brazzers-harness:client:installHarness', function(plate)
-    QBCore.Functions.Progressbar("install_harness", "Installing Harness", Config.InstallTime, false, true, {
+RegisterNetEvent('brazzers-harness:client:installHarness', function(plate, action)
+    local label = 'Installing Harness'
+    if action == 'uninstall' then label = 'Uninstalling Harness' end
+    QBCore.Functions.Progressbar("install_harness", label, Config.InstallTime, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function()
-        TriggerServerEvent("brazzers-harness:server:installHarness", plate)
+        TriggerServerEvent("brazzers-harness:server:installHarness", plate, action)
     end, function()
         QBCore.Functions.Notify(Lang:t("error.canceled_installation"), "error", 5000)
     end)

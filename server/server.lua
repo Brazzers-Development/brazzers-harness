@@ -30,15 +30,18 @@ RegisterNetEvent('brazzers-harness:server:attachHarness', function(plate, ItemDa
     local src = source
     if not src then return end
     if not isVehicleOwned(plate) then return TriggerClientEvent('seatbelt:client:UseHarness', src, ItemData, true) end
+    if hasHarness(plate) then return TriggerClientEvent('brazzers-harness:client:installHarness', src, plate, 'uninstall') end
 
-    TriggerClientEvent('brazzers-harness:client:installHarness', src, plate)
+    TriggerClientEvent('brazzers-harness:client:installHarness', src, plate, 'install')
 end)
 
-RegisterNetEvent('brazzers-harness:server:installHarness', function(plate)
+RegisterNetEvent('brazzers-harness:server:installHarness', function(plate, action)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
-    if hasHarness(plate) then return TriggerClientEvent('QBCore:Notify', src, Lang:t("error.already_installed"), 'error') end
+
+    if not plate then return end
+    if not action then return end
 
     if Config.BrazzersFakePlate then
         local hasFakePlate = exports['brazzers-fakeplates']:getPlateFromFakePlate(plate)
@@ -46,10 +49,15 @@ RegisterNetEvent('brazzers-harness:server:installHarness', function(plate)
         Wait(100)
     end
 
-    -- Remove Item
-    Player.Functions.RemoveItem(Config.Harness, 1)
-    TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'remove')
-    MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{true, plate})
+    if action == 'install' then
+        Player.Functions.RemoveItem(Config.Harness, 1)
+        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'remove')
+        MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{true, plate})
+    elseif action == 'uninstall' then
+        Player.Functions.AddItem(Config.Harness, 1)
+        TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'add')
+        MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{NULL, plate})
+    end
 end)
 
 RegisterNetEvent('brazzers-harness:server:toggleBelt', function(plate, ItemData)
