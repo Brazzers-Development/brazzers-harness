@@ -54,6 +54,7 @@ RegisterNetEvent('brazzers-harness:server:installHarness', function(plate, actio
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'remove')
         MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{true, plate})
     elseif action == 'uninstall' then
+        if not hasHarness(plate) then return TriggerClientEvent('QBCore:Notify', src, Lang:t("error.no_harness"), 'error') end
         Player.Functions.AddItem(Config.Harness, 1)
         TriggerClientEvent('inventory:client:ItemBox', Player.PlayerData.source, QBCore.Shared.Items[Config.Harness], 'add')
         MySQL.update('UPDATE player_vehicles set harness = ? WHERE plate = ?',{NULL, plate})
