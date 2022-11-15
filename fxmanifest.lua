@@ -3,7 +3,7 @@ game 'gta5'
 
 name "Brazzers Harness"
 author "Brazzers Development | MannyOnBrazzers#6826"
-version "1.0"
+version "1.1"
 
 lua54 'yes'
 

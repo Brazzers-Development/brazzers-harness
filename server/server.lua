@@ -30,7 +30,7 @@ RegisterNetEvent('brazzers-harness:server:attachHarness', function(plate, ItemDa
     local src = source
     if not src then return end
     if not isVehicleOwned(plate) then return TriggerClientEvent('seatbelt:client:UseHarness', src, ItemData, true) end
-    if hasHarness(plate) then return TriggerClientEvent('brazzers-harness:client:installHarness', src, plate, 'uninstall') end
+    if Config.UninstallHarnessWithItem and hasHarness(plate) then return TriggerClientEvent('brazzers-harness:client:installHarness', src, plate, 'uninstall') end
 
     TriggerClientEvent('brazzers-harness:client:installHarness', src, plate, 'install')
 end)

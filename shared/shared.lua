@@ -7,3 +7,5 @@ Config.BrazzersFakePlate = false
 Config.InstallTime = 10000
 -- Harness item name
 Config.Harness = 'harness'
+-- If enables, uninstalls the harness if you use another harness inside a vehicle that has a harness installed
+Config.UninstallHarnessWithItem = false
