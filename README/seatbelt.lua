@@ -263,7 +263,7 @@ RegisterCommand('toggleseatbelt', function()
     local class = GetVehicleClass(GetVehiclePedIsUsing(PlayerPedId()))
     if class == 8 or class == 13 or class == 14 then return end
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-    local plate = GetVehicleNumberPlateText(vehicle)
+    local plate = QBCore.Functions.GetPlate(vehicle)
 
     TriggerServerEvent('brazzers-harness:server:toggleBelt', plate)
 end, false)
