@@ -2,7 +2,7 @@ local QBCore = exports[Config.Core]:GetCoreObject()
 
 local function validateClass()
     local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
-    local plate = GetVehicleNumberPlateText(vehicle)
+    local plate = QBCore.Functions.GetPlate(vehicle)
     local class = GetVehicleClass(GetVehiclePedIsUsing(PlayerPedId()))
     if class ~= 8 or class ~= 13 or class ~= 14 then return plate end
 end
